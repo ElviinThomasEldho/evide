@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, ProgressBarAndroid, Button } from 'react-native';
+import { StyleSheet, Text, View, ProgressBar, Button } from 'react-native';
 import React from 'react';
 import MapView, { Polyline, Marker } from 'react-native-maps';
 
 const JourneyProgressScreen = ({ route }) => {
   const { routeDetails } = route.params;
+  console.log(routeDetails)
   const [currentStepIndex, setCurrentStepIndex] = React.useState(0);
 
   const currentStep = routeDetails.details.steps[currentStepIndex];
@@ -18,30 +19,30 @@ const JourneyProgressScreen = ({ route }) => {
   return (
     <View style={styles.container}>
       {/* Progress Bar */}
-      <ProgressBarAndroid
+      {/* <ProgressBar
         styleAttr="Horizontal"
         indeterminate={false}
         progress={(currentStepIndex + 1) / routeDetails.details.steps.length}
         style={styles.progressBar}
-      />
+      /> */}
 
       {/* Live Map */}
       <MapView style={styles.map}>
         {/* Polyline for route */}
-        <Polyline
+        {/* <Polyline
           coordinates={routeDetails.details.steps.map(step => ({
             latitude: step.fromLat,
             longitude: step.fromLng
           }))}
           strokeWidth={4}
           strokeColor="blue"
-        />
+        /> */}
         {/* Current Step Marker */}
-        <Marker
+        {/* <Marker
           coordinate={{ latitude: currentStep.fromLat, longitude: currentStep.fromLng }}
           title="Current Step"
           description={`${currentStep.mode} - ${currentStep.line || ''}`}
-        />
+        /> */}
       </MapView>
 
       {/* Bottom Container for Step Information */}
